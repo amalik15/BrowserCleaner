@@ -1,3 +1,7 @@
+const clearCallBack = () => {
+    document.getElementById('complete').innerHTML = 'Cleaned'
+}
+
 const clear = async () => {
     try {
         await chrome.browsingData.remove(
@@ -19,8 +23,8 @@ const clear = async () => {
                 "pluginData": true,
                 "serviceWorkers": true,
                 "webSQL": true
-            });
-        document.getElementById('complete').innerHTML = 'Cleaned';
+            }, clearCallBack);
+        ;
     }
     catch (err) {
         document.getElementById('complete').innerHTML = 'Error';
