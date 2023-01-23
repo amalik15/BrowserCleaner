@@ -3,30 +3,28 @@ const clearCallBack = () => {
 }
 
 const clear = async () => {
+    console.log('clicked')
     try {
-        await chrome.browsingData.remove(
+        await browser.browsingData.remove(
             {
                 "since": 0
             },
             {
-                "appcache": true,
                 "cache": true,
-                "cacheStorage": true,
                 "cookies": true,
                 "downloads": true,
-                "fileSystems": true,
                 "formData": true,
                 "history": true,
                 "indexedDB": true,
                 "localStorage": true,
                 "passwords": true,
                 "pluginData": true,
-                "serviceWorkers": true,
-                "webSQL": true
+                "serverBoundCertificates": true,
+                "serviceWorkers": true
             }, clearCallBack);
-        ;
     }
     catch (err) {
+        console.log('err', err)
         document.getElementById('complete').innerHTML = 'Error';
     }
 };
